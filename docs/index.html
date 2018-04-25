@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Mobile DeviceOrientation Forge Viewer Example</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1">
+		<meta charset="utf-8">
+	    <link rel="shortcut icon" href="#" />		
+	    <link  href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v3.3" rel="stylesheet" type="text/css">
+	    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js?v=v3.3"></script>
+	    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.js?v=v3.3"></script>
+		<script src="deviceOrientationExt.js"></script>
+	    <style> 
+	    	html {overflow: hidden; margin: 0px; color: white; font-family: Avenir Next, Arial;}
+		</style>
+
+	</head>
+    <body onload="initializeViewer();" style="margin:0">
+	    <div id="forgeViewer" ></div>
+	</body>
+
+<script>
+var svfURL = "https://lmv-models.s3.amazonaws.com/simple_revit_building/output/Resource/3D_View/_3D_/_3D_.svf";
+var $ = function(div){return document.getElementById(div)}
+var viewer;
+
+function initializeViewer() {
+    window.devicePixelRatio = 1;
+    viewer = new Autodesk.Viewing.Private.GuiViewer3D($('forgeViewer'), {});
+    var options = {
+        env: "Local",
+        useConsolidation: true,
+        useADP: false,
+    }
+
+    Autodesk.Viewing.Initializer( options, function() {
+        viewer.start(svfURL, options, onSuccess);            
+    });
+
+    function onSuccess() {
+        viewer.setBackgroundColor(0,0,0, 155,155,155);
+        viewer.impl.toggleGroundShadow(true);
+        setViewport();
+        window.setTimeout(i=>viewer.toolController.activateTool('firstperson'),4000);
+    }
+
+	function setViewport() {
+		viewer.restoreState({"viewport":{"name":"","eye":[-27.498768999304694,17.240887736969256,-11.235977021830514],"target":[-25.90596576702821,11.899228426419839,-11.16485562032265],"up":[-0.0036457005322899786,0.012226300020719175,0.9999186099155433],"worldUpVector":[0,0,1],"pivotPoint":[-25.910858326341717,13.304184813921704,-13.584794263544843],"distanceToOrbit":4.195994357528876,"aspectRatio":1.7746113989637307,"projection":"perspective","isOrthographic":false,"fieldOfView":43.95808809186831}});	
+	}
+
+}
+	    
+</script>
+</html>
