@@ -42,7 +42,7 @@ Steps:
 1. Add `<script src="deviceOrientationExt.js"></script>` to your `index.html`
 2. Click on the 'first person' tool
 
-![](firstperson.jpg)
+![](firstPerson.jpg)
 
 3. That's it !
 
