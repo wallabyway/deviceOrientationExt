@@ -4,18 +4,21 @@ Use Forge Viewer like a panorama viewer - view the inside of a Revit building wi
 
 ![](scanQRcode.jpg)
 
+## Introduction
+
 I recently had a customer asking for a quick way to showcase the inside of a building, like a panorama, but with Forge Viewer and a QR-code.  The idea was simple...
+
+<img src=pano.gif width="100%" />
 
 1. with my iPhone camera
 2. scan the QR-Code (try the one above)
+3. Now, aim my iPhone up, down and around, to look around the room.
 
 > This launches Forge Viewer and loads the Revit room and starts the 'first person' tool
 
-3. Now, aim my iPhone up, down and around, to look around the room.
+> **Bonus points** - add 3D markers everywhere using the [MarkupExt.js](https://github.com/wallabyway/markupExt).
 
-> Bonus points - add 3D markers everywhere using the [MarkupExt.js](https://github.com/wallabyway/markupExt).
-
-**That's it.  Sounds simple, right?  Well... sort of.**
+That's it.  Sounds simple, right?  Well... sort of.
 
 There's some quaternion math that ties the onDeviceOrientation events (in Euler degrees) from the iPhone compass/accelerometer, into the Forge Viewer's position/target camera object.
 
